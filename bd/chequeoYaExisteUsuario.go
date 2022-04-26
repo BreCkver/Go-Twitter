@@ -2,6 +2,7 @@ package bd
 
 import (
 	"context"
+	"log"
 	"time"
 
 	"github.com/BreCkver/Go-Twitter/models"
@@ -25,6 +26,7 @@ func ChequeoYaExisteUsuario(email string) (models.Usuario, bool, string) {
 	ID := resultado.ID.Hex()
 
 	if err != nil {
+		log.Println("Error buscando usuario, " + err.Error())
 		return resultado, false, ID
 	}
 

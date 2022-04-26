@@ -20,7 +20,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&t)
 
 	if err != nil {
-		http.Error(w, "Usuario y/o Contraseña inválidos"+err.Error(), 400)
+		http.Error(w, "No se logro serializar el request "+err.Error(), 400)
 		return
 	}
 
@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	documento, existe := bd.IntentoLogin(t.Email, t.Password)
 	if existe == false {
-		http.Error(w, "Usuario y/o Contraseña inválidos", 400)
+		http.Error(w, "Usuario/Contraseña inválidos", 400)
 		return
 	}
 
