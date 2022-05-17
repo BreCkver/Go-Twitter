@@ -25,10 +25,12 @@ func GraboTweet(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, "Ocurrio un error al intentar registrar el registro, intente nuevamente"+err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	if status == false {
 		http.Error(w, "No se ha logrado insertar el Tweet", http.StatusBadRequest)
+		return
 	}
 
 	w.WriteHeader(http.StatusCreated)
